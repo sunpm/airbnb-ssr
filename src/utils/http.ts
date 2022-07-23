@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const defaultConfig = {
   timeout: 5000,
@@ -15,7 +15,7 @@ class Http {
 
   // 请求拦截
   private httpInterceptorsRequest() {
-    Http.axiosInstance.interceptors.request.use((config) => {
+    Http.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
       return config
     }, (error) => {
       return Promise.reject(error)
@@ -24,7 +24,7 @@ class Http {
 
   // 响应拦截
   private httpInterceptorsResponse() {
-    Http.axiosInstance.interceptors.response.use((response) => {
+    Http.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
       return response
     }, error => {
       return Promise.reject(error)

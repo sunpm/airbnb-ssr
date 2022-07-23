@@ -21,6 +21,8 @@ const getRoomList = () => {
 }
 
 getRoomList()
+
+const value1 = ''
 </script>
 
 <template>
@@ -30,6 +32,11 @@ getRoomList()
   <div class="text">
     hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhv
   </div>
+  <el-date-picker
+      v-model="value1"
+      type="date"
+      placeholder="Pick a day"
+  />
 </template>
 
 <style scoped lang="scss">
