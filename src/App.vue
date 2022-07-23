@@ -5,11 +5,14 @@ import HelloWorld from './components/HelloWorld.vue'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { locale: localeLanguage } = useI18n()
 const locale = ref(zhCn)
 
 const changeLang = (language: any) => {
   locale.value = language
+  localeLanguage.value = language.name
 }
 </script>
 

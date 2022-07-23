@@ -2,7 +2,9 @@
 import { useRoute, useRouter } from 'vue-router'
 import { getCurrentInstance, h } from 'vue'
 import { fetchRoomList } from '@/api'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
 console.log(route.params)
@@ -26,12 +28,11 @@ const value1 = ''
 </script>
 
 <template>
-  首页
-  <el-button>Default</el-button>
-  <button @click="() => router.push({path: '/mine', query: {id: 1}})">跳转到个人中心</button>
-  <div class="text">
-    hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心跳转到个人中心hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhv
+  <div>
+    国际化：{{ t('home') }}
   </div>
+  <button @click="() => router.push({path: '/mine', query: {id: 1}})">跳转到个人中心</button>
+
   <el-date-picker
       v-model="value1"
       type="date"
