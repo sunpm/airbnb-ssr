@@ -24,8 +24,8 @@ const changeLang = (language: any) => {
     <HelloWorld msg="Vite + Vue"/>
     <button @click="changeLang(zhCn)">中文</button>
     <button @click="changeLang(en)">英文</button>
-    <router-link to="'/home'">首页</router-link>
-    <router-link to="'/main'">个人中心</router-link>
+    <router-link to="'/home">首页</router-link>
+    <router-link to="'/main">个人中心</router-link>
     <router-view></router-view>
   </el-config-provider>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import { getCurrentInstance, h } from 'vue'
-import { fetchRoomList } from '@/api'
+import { fetchElephant, fetchRoomList } from '@/api'
 import { useI18n } from 'vue-i18n'
 import IndexedDB from '@/utils/indexedDB'
 
@@ -25,46 +25,21 @@ const getRoomList = () => {
 
 getRoomList()
 
-// 数据库相关操作
-const airbnbDB = new IndexedDB('airbnb')
-
-airbnbDB.openStore('elephant', 'id', ['nose', 'ear'])
-
 const value1 = ''
 
-// 增 / 改
-function addDB(storeName: string) {
-  airbnbDB.updateItem(storeName, {
-    nose: '33m',
-    ear: '比较大'
-  })
+async function getElephant() {
+  const result = await fetchElephant()
+  console.log(result)
 }
 
-// 删除
-function deleteDB(storeName: string, key: number | string) {
-  airbnbDB.deleteItem(storeName, key)
-}
-
-// 查询所有数据
-function getAll(storeName: string) {
-  airbnbDB.getList(storeName)
-}
-
-// 查询某一条数据
-function getItem(storeName: string, key: number | string) {
-  airbnbDB.getItem(storeName, key)
-}
 </script>
 
 <template>
   <div>
     国际化：{{ t('home') }}
   </div>
-  <button @click="addDB('elephant')">增</button>
-  <button @click="deleteDB('elephant', 1)">删除</button>
-  <button @click="getAll('elephant')">查询所有数据</button>
-  <button @click="getItem('elephant', 2)">查询id为2的数据</button>
   <button @click="() => router.push({path: '/mine', query: {id: 1}})">跳转到个人中心</button>
+  <button @click="getElephant">查看所有</button>
 
   <el-date-picker
       v-model="value1"
